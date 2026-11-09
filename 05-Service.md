@@ -4,7 +4,7 @@
 >
 > ```
 #   你调用 http://orders.default.svc.cluster.local:8080
-#        │  DNS(由CoreDNS提供, 名字规则: <svc>.<ns>.svc.cluster.local)
+#        │  DNS(由CoreDNS提供, 名字规则: &lt;svc&gt;.&lt;ns&gt;.svc.cluster.local)
 #        ▼
 #   Service (虚拟ClusterIP, 10.96.x.x)  ←─稳定入口, 与Pod生死无关
 #        │  selector: app=orders  ──选择──→  label匹配 且 readiness通过 的Pod
@@ -128,7 +128,7 @@ kubectl delete deploy,svc svc-demo
 
 ## 生产案例：selector 失配与"服务半通"（行业高频模式）
 
-label 被某次重构悄悄改掉：Service 的 endpoints 变空或只剩部分 Pod——症状是"服务时通时不通"（取决于负载均衡打到哪个副本）。诊断一条命令：`kubectl get endpoints <svc>`，端点数与副本数不符即查 label。本课程第 5 章 lab 也实证了"探针失败导致端点摘除"的半通形态。
+label 被某次重构悄悄改掉：Service 的 endpoints 变空或只剩部分 Pod——症状是"服务时通时不通"（取决于负载均衡打到哪个副本）。诊断一条命令：`kubectl get endpoints &lt;svc&gt;`，端点数与副本数不符即查 label。本课程第 5 章 lab 也实证了"探针失败导致端点摘除"的半通形态。
 
 ## 本章面试题
 

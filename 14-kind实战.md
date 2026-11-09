@@ -18,7 +18,7 @@
 
 ```bash
 # 依赖检查: Docker/OrbStack运行中 + kind + kubectl + helm (第12章lab已装helm)
-docker version --format '{{.Server.Version}}' && kind version && kubectl version --client --short 2>/dev/null || kubectl version --client
+docker version --format '\{\{.Server.Version\}\}' && kind version && kubectl version --client --short 2>/dev/null || kubectl version --client
 
 # 生产化集群配置 (含ingress端口映射/标签/资源)
 cat <<'EOF' > ~/k8s-lab-cluster.yaml
@@ -254,7 +254,7 @@ kubectl get events -n ai-lab --sort-by=.lastTimestamp | tail -10   # 滚动的�
 ## 本章面试题
 
 1. kind 的网络模型与生产集群的本质差异？（容器当节点/端口映射 vs 真虚机/CNI）
-2. 集群内服务互访的 URL 规则？（FQDN=<svc>.<ns>.svc.cluster.local[:port]）
+2. 集群内服务互访的 URL 规则？（FQDN=&lt;svc&gt;.&lt;ns&gt;.svc.cluster.local[:port]）
 3. 镜像怎么进 kind？（kind load，绕过仓库；生产是 registry+imagePullPolicy）
 4. 本地验证过的东西到生产还差什么？（真实负载/真实网络策略/真实证书/多节点拓扑）
 
